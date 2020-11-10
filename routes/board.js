@@ -3,6 +3,8 @@ const moment = require('moment');
 const router = express.Router();
 const { pool } = require('../modules/mysql-conn');
 const { alert } = require('../modules/util');
+const {upload, allowExt , allowImg } =require('../modules/multer-conn');
+const path = require('path');
 
 router.get(['/', '/list'], async (req, res, next) => {
 	const pug = {title: '게시판 리스트', js: 'board', css: 'board'};
@@ -27,9 +29,23 @@ router.get('/write', (req, res, next) => {
 	res.render('./board/write.pug', pug);
 });
 
-router.post('/save', async (req, res, next) => {
+router.post('/save', upload.single('upfile'), async (req, res, next) => {
 	const { title, content, writer } = req.body;
 	var values = [title, writer, content];
+
+	if(req.allowUpload){
+		if(req.allowUpload.allow){
+			sql +=',savefile=?, realfile=? ';
+			values.push(req.file.filename);
+			values.push(req.file.originalname);
+			
+		}
+		else{
+			res.send(alert(`${req.allowUpload.ext}은(는) 업로드 할 수 없습니다.`,'/board'));
+			
+		}
+	}
+
 	var sql = 'INSERT INTO board SET title=?, writer=?, content=?';
 	try {
 		const connect = await pool.getConnection();
@@ -52,6 +68,13 @@ router.get('/view/:id', async (req, res) => {
 		connect.release();
 		pug.list = rs[0][0];
 		pug.list.wdate = moment(pug.list.wdate).format('YYYY-MM-DD HH:mm:ss');
+		if(pug.list.savefile){
+			var ext= path.extname(pug.list.savefile).toLowerCase().replace(".","");
+			if(ExtImg.indexOf(ext) > -1){
+				pug.list.imgSrc= `/storage/${pug.list.savefile.substr(0,6)}/${pug.list.savefile}}`
+			}
+		}
+
 		res.render('./board/view.pug', pug);
 	}
 	catch(e) {

@@ -24,7 +24,9 @@ app.locals.pretty = true;
 
 /** middleware ********************************/
 // app.use(logger);
-app.use(express.json());
+
+app.use((req, res, next) =>{express.json()(req,res, next);});
+//app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 
@@ -33,9 +35,20 @@ app.get('/test/upload', (req, res, next) => {
 	res.render('test/upload');
 });
 
+
 app.post('/test/save', upload.single("upfile"), (req, res, next) => {
-	res.json(req.body);
+	//res.json(req.body);
+	//req.file;
+	//req.allowUpload;
+	res.json(req.allowUpload);
+
 });
+/* app.post('/test/save',(req, res, next)=>{ upload.single("upfile")(req, res, next);}, (req, res, next) => {
+	//res.json(req.body);
+	res.json(req.allowUpload);
+
+}); */
+
 app.use('/', express.static(path.join(__dirname, './public')));
 app.use('/storage', express.static(path.join(__dirname,"./uploads")));
 app.use('/board', boardRouter);
