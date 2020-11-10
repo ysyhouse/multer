@@ -8,7 +8,7 @@ const { upload } = require('./modules/multer-conn');
 
 
 /** modules ********************************/
-// const logger = require('./modules/morgan-conn');
+const logger = require('./modules/morgan-conn');
 const boardRouter = require('./routes/board');
 const galleryRouter = require('./routes/gallery');
 
@@ -23,14 +23,19 @@ app.set('views', path.join(__dirname, './views'));
 app.locals.pretty = true;
 
 /** middleware ********************************/
-// app.use(logger);
+app.use(logger);
 
-app.use((req, res, next) =>{express.json()(req,res, next);});
-//app.use(express.json());
+//app.use((req, res, next) =>{express.json()(req,res, next);});
+app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 
 /** routers ********************************/
+app.use('/', express.static(path.join(__dirname, './public')));
+app.use('/storage', express.static(path.join(__dirname, './uploads')));
+app.use('/board', boardRouter);
+app.use('/gallery', galleryRouter);
+
 app.get('/test/upload', (req, res, next) => {
 	res.render('test/upload');
 });
@@ -40,7 +45,7 @@ app.post('/test/save', upload.single("upfile"), (req, res, next) => {
 	//res.json(req.body);
 	//req.file;
 	//req.allowUpload;
-	res.json(req.allowUpload);
+	res.json(req.file);
 
 });
 /* app.post('/test/save',(req, res, next)=>{ upload.single("upfile")(req, res, next);}, (req, res, next) => {
@@ -49,10 +54,6 @@ app.post('/test/save', upload.single("upfile"), (req, res, next) => {
 
 }); */
 
-app.use('/', express.static(path.join(__dirname, './public')));
-app.use('/storage', express.static(path.join(__dirname,"./uploads")));
-app.use('/board', boardRouter);
-app.use('/gallery', galleryRouter);
 
 
 /** error ********************************/

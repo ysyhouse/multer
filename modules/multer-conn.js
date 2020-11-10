@@ -2,7 +2,7 @@ const multer = require('multer');
 const moment = require('moment');
 const path=require('path');
 const fs= require('fs');
-//const fsp= require('fs/promises');
+const fsp= require('fs/promises');
 const { v4: uuidv4 } = require('uuid');
 const allowExt = ['jpg', 'jpeg', 'png', 'gif', 'doc', 'docx', 'ppt', 'pptx', 'pdf', 'hwp'];
 const allowImg = ['jpg', 'jpeg', 'png', 'gif'];
@@ -19,6 +19,12 @@ const makeFolder=()=>{
             return result; //result = {err : null, folder :'경로'}
         }
     else return result;
+    /* if(!fs.existsSync(folder)) {
+		const err = await fsp.mkdir(folder);
+		if(err) result.err = err;
+		return result; 
+	}
+	else return result; */
   }
 
 
@@ -47,17 +53,17 @@ const makeFolder=()=>{
   else return result; 
 } */
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination :  (req, file, cb) =>{
       const result = makeFolder();
       result.err ?  cb(err) : cb(null, result.folder);
     },
-    filename: function (req, file, cb) {
+    filename: (req, file, cb) =>{
       let ext= path.extname(file.originalname);
       let saveName = moment().format('YYMMDD') + "-" +uuidv4() +ext;
       cb(null,saveName);
     }
   });
 
-const upload = multer({storage, fileFilter, limits:{ fileSize : 2048000}});
+const upload = multer({ storage, fileFilter, limits:{ fileSize : 20480000 }});
 
 module.exports = {upload , allowExt, allowImg};

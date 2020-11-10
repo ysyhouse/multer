@@ -32,10 +32,11 @@ router.get('/write', (req, res, next) => {
 router.post('/save', upload.single('upfile'), async (req, res, next) => {
 	const { title, content, writer } = req.body;
 	var values = [title, writer, content];
+	var sql = 'INSERT INTO board SET title=?, writer=?, content=?';
 
 	if(req.allowUpload){
 		if(req.allowUpload.allow){
-			sql +=',savefile=?, realfile=? ';
+			sql +=',savefile=?, realfile=?';
 			values.push(req.file.filename);
 			values.push(req.file.originalname);
 			
@@ -46,7 +47,7 @@ router.post('/save', upload.single('upfile'), async (req, res, next) => {
 		}
 	}
 
-	var sql = 'INSERT INTO board SET title=?, writer=?, content=?';
+	
 	try {
 		const connect = await pool.getConnection();
 		const rs = await connect.query(sql, values);
@@ -70,7 +71,7 @@ router.get('/view/:id', async (req, res) => {
 		pug.list.wdate = moment(pug.list.wdate).format('YYYY-MM-DD HH:mm:ss');
 		if(pug.list.savefile){
 			var ext= path.extname(pug.list.savefile).toLowerCase().replace(".","");
-			if(ExtImg.indexOf(ext) > -1){
+			if(allowImg.indexOf(ext) > -1){
 				pug.list.imgSrc= `/storage/${pug.list.savefile.substr(0,6)}/${pug.list.savefile}}`
 			}
 		}
