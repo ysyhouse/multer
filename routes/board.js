@@ -3,7 +3,7 @@ const moment = require('moment');
 const router = express.Router();
 const { pool } = require('../modules/mysql-conn');
 const { alert } = require('../modules/util');
-const {upload, allowExt , allowImg } =require('../modules/multer-conn');
+const {upload, allowExt , imgExt } =require('../modules/multer-conn');
 const path = require('path');
 
 router.get(['/', '/list'], async (req, res, next) => {
@@ -39,7 +39,7 @@ router.post('/save', upload.single('upfile'), async (req, res, next) => {
 			sql +=',savefile=?, realfile=?';
 			values.push(req.file.filename);
 			values.push(req.file.originalname);
-			
+			console.log(req);
 		}
 		else{
 			res.send(alert(`${req.allowUpload.ext}은(는) 업로드 할 수 없습니다.`,'/board'));
@@ -71,8 +71,8 @@ router.get('/view/:id', async (req, res) => {
 		pug.list.wdate = moment(pug.list.wdate).format('YYYY-MM-DD HH:mm:ss');
 		if(pug.list.savefile){
 			var ext= path.extname(pug.list.savefile).toLowerCase().replace(".","");
-			if(allowImg.indexOf(ext) > -1){
-				pug.list.imgSrc= `/storage/${pug.list.savefile.substr(0,6)}/${pug.list.savefile}}`
+			if(imgExt.indexOf(ext) > -1){
+				pug.list.imgSrc= `/storage/${pug.list.savefile.substr(0,6)}/${pug.list.savefile}`
 			}
 		}
 
