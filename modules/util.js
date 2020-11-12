@@ -8,7 +8,7 @@ const alert = (msg, loc=null) => {
 }
 
 const uploadFolder = (filename)=>{
-	path.join(__dirname,'../uploads',filename.substr(0,6),filename);
+	return path.join(__dirname,'../uploads',filename.substr(0,6),filename);
 }
 
 module.exports = { alert , uploadFolder };

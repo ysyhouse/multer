@@ -5,9 +5,6 @@ const app = express();
 const path = require('path');
 
 const createError= require('http-errors');
-const { upload } = require('./modules/multer-conn');
-//const upload = multer({ dest: path.join(__dirname, './uploads/') });
-
 
 /** modules ********************************/
 const logger = require('./modules/morgan-conn');
@@ -38,25 +35,6 @@ app.use('/storage', express.static(path.join(__dirname, './uploads')));
 app.use('/board', boardRouter);
 app.use('/gallery', galleryRouter);
 
-app.get('/test/upload', (req, res, next) => {
-	res.render('test/upload');
-});
-
-
-app.post('/test/save', upload.single("upfile"), (req, res, next) => {
-	//res.json(req.body);
-	//req.file;
-	//req.allowUpload;
-	res.json(req.file);
-
-});
-/* app.post('/test/save',(req, res, next)=>{ upload.single("upfile")(req, res, next);}, (req, res, next) => {
-	//res.json(req.body);
-	res.json(req.allowUpload);
-
-}); */
-
-
 
 /** error ********************************/
 app.use((req, res, next) => {
@@ -68,16 +46,16 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
 	/* let msg=''; */
-	console.log(err);
+	//console.log(err);
 	const code = err.status || 500;
-	const message = err.status == 404 ? '페이지를 찾을 수 없습니다.':' 서버 내부 오류 입니다.';
+	const message = err.status == 404 ? '페이지를 찾을 수 없습니다.':' 서버 내부 오류 입니다. 관리자에게 문의하세요.';
 /* 	if(process.env.SERVICE !=='production'){
 		msg =err.msg || message;
 	}
 	else{
 		msg=message;
 	} */
-	let msg = process.env.SERVICE !=='production'?err.msg || message : message;
+	let msg = process.env.SERVICE !=='production'? err.msg || message : message;
 	/* const msg = err.message && process.env.SERVICE !=='production'? err.message : '서버 내부 오류입니다. 관리자에게 문의하세요.';
 	 */res.render('./error.pug', { code, msg });
 });
