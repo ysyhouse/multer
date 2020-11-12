@@ -9,6 +9,11 @@ block content
 				input(type="hidden" name="id" value=`${list && list.id ? list.id : ''}`)
 				input.form-control( tpye="text" name="title" placeholder="제목을 입력하세요." value=`${list && list.title ? list.title : ''}`)
 				input.form-control(tpye="text" name="writer" placeholder="작성자를 입력하세요." value=`${list && list.writer ? list.writer : ''}`)
+				div
+					if list && list.savefile
+					.file-wrap.py-2.mb-2.border-bottom
+						span= list.realfile
+						a.fa.fa-times-circle.ml-2(href=`javascript:fileRemove(${list.id})`)
 				input.form-control-file(name="upfile" type="file")
 				textarea.form-control(name="content" placeholder="내용을 입력하세요.")= `${list && list.content ? list.content : ''}`
 				hr
