@@ -64,6 +64,8 @@ const storage = multer.diskStorage({
     }
   });
 
+ // const pathGen =(filename, mode='abs')=>{}
+
 const upload = multer({ storage, fileFilter, limits:{ fileSize : 20480000 }});
 
 module.exports = {upload , allowExt, imgExt};
