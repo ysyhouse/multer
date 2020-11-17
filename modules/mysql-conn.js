@@ -1,5 +1,6 @@
 const mysql = require('mysql2/promise');
 
+
 const pool = mysql.createPool({
 	host: process.env.DB_HOST,
 	user: process.env.DB_USER,
@@ -55,7 +56,7 @@ const pool = mysql.createPool({
 	return {sql, values}
 } */
 
-const sqlGen = (table, obj) => {
+const sqlGen = async (table, obj) => {
 	let {mode=null, field=[], data={}, file=null, id=null, desc=null} = obj;
 	let sql=null, values=[];
 	let temp = Object.entries(data).filter(v => field.includes(v[0]));
@@ -89,7 +90,13 @@ const sqlGen = (table, obj) => {
 	}
 	sql = sql.substr(0, sql.length - 1);
 	if(mode == 'I', mode == 'U') sql += ` WHERE id=${id}`;
-	return { sql, values }
+
+	let connect = await pool.getConnection();
+	rs= await connect.query(sql, values);
+	connect.release();
+	return rs;
+
+	/* return { sql, values } */
 }
 
 
