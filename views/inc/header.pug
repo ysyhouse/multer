@@ -1,6 +1,13 @@
 header
-	.logo booldook
+	.logo sunny's board
+		span= `${user && user.username ? '['+user.username+']' : ''}`
 	.navi-wrap
 		a.navi(href='/') HOME
 		a.navi(href='/board') BOARD
 		a.navi(href='/gallery') GALLERY
+		span.mx-3 |
+		if user && user.id
+			a.navi(href='/user/logout') LOGOUT
+		else
+			a.navi(href='/user/join') JOIN
+			a.navi(href='/user/login') LOGIN
