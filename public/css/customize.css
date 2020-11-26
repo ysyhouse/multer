@@ -1,0 +1,84 @@
+.main-menu .navigation > li > #pad1{
+  -padding-right: 30px;
+}
+
+.text50{
+ 
+}
+.text50 h2{
+  font-size: 32px;
+  /* display: inline-block;
+  text-align: center; */
+  padding-left: 0%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  
+}
+
+.catalog-page{
+  margin-top: 10%;
+}
+
+@media only screen and (max-width: 1899px){}
+@media only screen and (max-width: 1499px){}
+
+@media only screen and (max-width: 1340px){
+ .text50 h2{
+   font-size:  30px;
+   
+ }
+}
+@media only screen and (max-width: 1199px){
+ 
+  .text50 h2{
+    font-size:  28px;
+    
+  }
+}
+
+/* @media only screen and (max-width: 1023px){
+ 
+} */
+@media only screen and (max-width: 991px){
+  .text50 h2{
+    font-size:  22px;
+    
+  }
+
+}
+
+
+@media only screen and (max-width: 767px){
+ 
+  
+}
+
+@media only screen and (max-width: 599px){
+  .text50 h2{
+    font-size: 20px;
+    width: 342px;
+
+    }
+}
+@media only screen and (max-width: 479px) {
+
+  .text50 h2{
+    font-size: 20px;
+    width: 342px;
+    
+    }
+ 
+}
+
+@media only screen and (max-width: 320px) {
+
+  .text50 h2{
+    font-size: 16px;
+    width: 276px;
+    
+    
+    }
+ 
+}

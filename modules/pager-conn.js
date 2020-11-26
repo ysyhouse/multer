@@ -4,7 +4,7 @@
 const pager = (page, totalRecord, obj) => {
 	page = Number(page);
 	totalRecord = Number(totalRecord);
-	let { listCnt=5, pagerCnt=3 } = obj || {};
+	let { listCnt=10, pagerCnt=3 } = obj || {};
 	let totalPage = Math.ceil(totalRecord / listCnt);
 	let startIdx = (page - 1) * listCnt;
 	let startPage = Math.floor((page - 1) / pagerCnt) * pagerCnt + 1;

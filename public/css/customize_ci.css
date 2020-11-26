@@ -1,0 +1,59 @@
+.ci .wordmark{
+
+}
+.ci .inner h5{
+  font-size: 22px;
+  word-break: keep-all;
+}
+
+.ci .wordmark img{
+  margin: 5% 0;
+}
+.color_box{
+  width: 230px;
+  height: 130px;
+  margin: 5% 0;
+}
+.color_1{
+  background-color: #1f8fff;
+}
+.color_3{
+  background-color: #939598;
+}
+.color_2{
+  background-color: #ac8232;
+}
+.color_4{
+  background-color: #000000;
+}
+
+.ci .logo_type{
+
+}
+.ci .logo_type img{
+  margin: 3% 0;
+}
+.logo_type{
+  margin-bottom: 5%;
+}
+.logo_type .type_box h5{
+   width: 292px;
+   margin: 0 auto;
+}
+.type_box{
+  margin: 5% 0 8%;
+  
+}
+
+@media(max-width: 768px){
+
+  .ci .inner h5{
+    font-size: 16px;
+  }
+}
+@media(max-width: 470px){
+
+  .ci .inner h5{
+    font-size: 14px;
+  }
+}

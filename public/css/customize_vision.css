@@ -1,0 +1,38 @@
+.vision{
+  width: 11.25rem;
+  
+  background: #d0d0d0;
+  color: #fff;
+  border: 0.0625rem solid #d0d0d0;
+  border-radius: 1.875rem;
+  margin: 0 auto;
+  
+}
+.vision .vision_text{
+  font-size: 36px;
+  margin: 0.313rem 0 ;
+  
+}
+.text01{
+  margin-top: 1%;
+  font-weight: 500;
+}
+
+.mission{
+  width: 11.25rem;
+  
+  background: #d0d0d0;
+  color: #fff;
+  border: 0.0625rem solid #d0d0d0;
+  border-radius: 1.875rem;
+  margin: 4% auto;
+  margin-bottom: 0;
+}
+.mission .mission_text{
+  font-size: 36px;
+  margin: 0.313rem 0;
+  
+}
+.mission_img img{
+  margin: 6% 0;
+}

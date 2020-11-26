@@ -22,7 +22,7 @@ block content
 							a(href=`/board/view/${v.id}`)= v.title
 								if v.savefile
 									i.fa.fa-file.ml-2
-						td= v.writer
+						td= '관리자'
 						td.text-left= v.content
 						td= v.wdate
 		include ../inc/pager.pug

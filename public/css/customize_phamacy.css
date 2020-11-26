@@ -1,0 +1,10 @@
+th,td{ text-align: center; }
+.table td, .table th{ padding: 1.2rem;}
+.table thead th{ border-bottom: 1px;}
+thead th,tbody td,tbody th{ border-right: 1px solid #dee2e6;}
+thead th:last-child ,tbody th:last-child,tbody td:last-child{ border-right: none;}
+
+tbody tr:last-child{ border-bottom: 1px solid #dee2e6;}
+
+thead tr{ background-color: #f2f2f2;}
+thead th:first-child, tbody th{ }

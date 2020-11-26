@@ -1,0 +1,5 @@
+.catalog-page .upper-content .process .text img:hover{
+  border: 3px solid #1ba6ff;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, .3);
+
+}
