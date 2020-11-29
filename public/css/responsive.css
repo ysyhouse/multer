@@ -1197,6 +1197,7 @@
 
 	.service-details .process .block{
 		margin-bottom: 50px;
+		margin-bottom: 0px;
 	}
 
 	.service-details .process{
@@ -1622,7 +1623,7 @@
 
 	.page-banner h1,
 	.page-banner .inner-container{
-		text-align: left;
+		text-align: center;
 	}
 
 	.service-details .installation .info-box{
@@ -1996,6 +1997,7 @@
 
 	.service-tabs .tabs-content .b-box{
 		padding: 15px 15px;
+		display: none;
 	}
 
 	.service-tabs .tabs-content .b-box .image,

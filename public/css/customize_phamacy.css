@@ -8,3 +8,28 @@ tbody tr:last-child{ border-bottom: 1px solid #dee2e6;}
 
 thead tr{ background-color: #f2f2f2;}
 thead th:first-child, tbody th{ }
+
+@media only screen and (max-width: 991px){
+  
+  
+}
+@media only screen and (max-width: 767px){
+ 
+  
+}
+
+@media only screen and (max-width: 599px){
+  
+}
+@media only screen and (max-width: 479px) {
+
+    .feature-block{
+        width: 100%;
+        overflow-x: auto;
+    }
+    .table{
+        width: 220%;
+        
+    }
+ 
+}

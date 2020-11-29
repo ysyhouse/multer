@@ -12,6 +12,9 @@ thead tr{ background-color: #f2f2f2;}
 thead th:first-child, tbody th{ }
 .table thead tr th:first-child,.table tbody tr th{ -padding: .5rem;}
 
+.services-page .content-side .main-image{
+     margin-top: 8%;
+}
 @media only screen and (max-width: 1899px){}
 @media only screen and (max-width: 1499px){}
 
@@ -50,7 +53,11 @@ thead th:first-child, tbody th{ }
   .fishmom_desc .table{
        width: 200%;
   }
- 
+  .fishmom{
+
+     width: 110%;
+  }
+
 }
 
 @media only screen and (max-width: 320px) {

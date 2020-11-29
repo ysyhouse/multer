@@ -8,7 +8,6 @@ block content
 			form(method="post" name="boardForm" action=`${list ? '/board/saveUpdate' : '/board/save'}` enctype="multipart/form-data")
 				input(type="hidden" name="id" value=`${list && list.id ? list.id : ''}`)
 				input.form-control( tpye="text" name="title" placeholder="제목을 입력하세요." value=`${list && list.title ? list.title : ''}`)
-				input.form-control(tpye="text" name="writer" placeholder="작성자를 입력하세요." value=`${list && list.writer ? list.writer : ''}`)
 				div
 					if list && list.savefile
 						.file-wrap.py-2.mb-2.border-bottom

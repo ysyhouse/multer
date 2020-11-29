@@ -14,7 +14,8 @@
   
 }
 .text01{
-  margin-top: 1%;
+  margin-top: 8%;
+  margin-bottom: 7%;
   font-weight: 500;
 }
 
@@ -35,4 +36,59 @@
 }
 .mission_img img{
   margin: 6% 0;
+}
+.text_area .text01 span{
+  font-size: 42px;
+}
+.text_area .text01 span:nth-child(2){
+
+  color: #1f8fff;
+}
+.text_area .text01 span:nth-child(1),.text_area .text01 span:nth-child(3){
+  color: #000;
+}
+@media only screen and (max-width: 991px){
+  .vision{
+    width: 6.25rem;
+  } 
+  .text_area .vision .vision_text{
+    font-size: 18px;
+  }
+  .mission{
+    width: 6.25rem;
+  } 
+  .text_area .mission .mission_text{
+    font-size: 18px;
+  }
+  .text_area .text01 span{
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 767px){
+ 
+  
+}
+
+@media only screen and (max-width: 599px){
+  
+}
+@media only screen and (max-width: 479px) {
+
+  .vision{
+    width: 4.25rem;
+  } 
+  .text_area .vision .vision_text{
+    font-size: 14px;
+  }
+ 
+  .mission{
+    width: 4.25rem;
+  } 
+  .text_area .mission .mission_text{
+    font-size: 14px;
+  }
+  .text_area .text01 span{
+    font-size: 16px;
+  }
+
 }

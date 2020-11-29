@@ -18,7 +18,7 @@
 }
 
 .catalog-page{
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 @media only screen and (max-width: 1899px){}
@@ -65,10 +65,15 @@
 @media only screen and (max-width: 479px) {
 
   .text50 h2{
-    font-size: 20px;
+    font-size: 18px;
     width: 342px;
-    
+    text-align: center;
     }
+    .about-three .image-column .image .seo_img{
+
+      width: 100%;
+    }
+    
  
 }
 

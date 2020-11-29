@@ -1,13 +1,106 @@
-header
-	.logo sunny's board
-		span= `${user && user.username ? '['+user.username+']' : ''}`
-	.navi-wrap
-		a.navi(href='/') HOME
-		a.navi(href='/board') BOARD
-		a.navi(href='/gallery') GALLERY
-		span.mx-3 |
-		if user && user.id
-			a.navi(href='/user/logout') LOGOUT
-		else
-			a.navi(href='/user/join') JOIN
-			a.navi(href='/user/login') LOGIN
+header.main-header
+  .header-top
+    .auto-container
+      .inner.clearfix
+  .header-upper
+    .auto-container
+      .inner-container.clearfix
+        // Logo
+        .logo-box
+          .logo
+            a(href='/html/index.html' title='aquanet')
+              img(src='../images/logo3.png' alt='aquanet' title='aquanet')
+        .other-links.clearfix
+          .info
+            .info-icon
+              span.flaticon-smartphone
+            .phone
+              a(href='tel:055-641-0430') 055-641-0430
+            .call
+              a(href='/html/contact.html')
+                | 메일로 연락처 남기기
+                span.icon.flaticon-play-button-1
+  .header-lower
+    .auto-container
+      .inner.clearfix
+        .nav-outer.clearfix
+          // Mobile Navigation Toggler
+          #mobile-nav-toggler.mobile-nav-toggler
+            span#icon.icon.flaticon-menu-1
+          // Main Menu
+          nav.main-menu.navbar-expand-md.navbar-light
+            #navbarSupportedContent.collapse.navbar-collapse.show.clearfix
+              ul.navigation.clearfix
+                li.dropdown
+                  a(href='#') &#xAE30;&#xC5C5;&#xC18C;&#xAC1C;
+                  ul
+                    li
+                      a(href='/html/about.html') CEO &#xC778;&#xC0AC;&#xB9D0;
+                    li
+                      a(href='/html/vision.html') &#xBE44;&#xC804;
+                    li
+                      a(href='/html/history.html') &#xAE30;&#xC5C5;&#xC5F0;&#xD601;
+                    li
+                      a(href='#') &#xAE30;&#xC5C5;&#xC2E4;&#xC801;
+                    li
+                      a(href='/html/ci.html') CI
+                li.dropdown
+                  a(href='#') &#xC0AC;&#xC5C5;&#xC18C;&#xAC1C;
+                  ul
+                    li
+                      a(href='fish-feed-graph.html') &#xC81C;&#xD488; &#xBAA8;&#xC2DD;&#xB3C4;
+                    li
+                      a(href='fish-feed.html') &#xC0AC;&#xB8CC;
+                    li
+                      a(href='feed-machine.html') &#xAE30;&#xC790;&#xC7AC;
+                    li
+                      a(href='/html/phamacy.html') &#xC57D;&#xD488;
+                    li
+                      a(href='/html/consulting.html') &#xCEE8;&#xC124;&#xD305;
+                li
+                  a(href='/html/smart-feed.html') &#xC2A4;&#xB9C8;&#xD2B8;&#xC591;&#xC2DD;&#xC7A5;
+                li
+                  a(href='/html/download.html') &#xD64D;&#xBCF4;&#xC13C;&#xD130;
+                li
+                  a(href='../board') &#xACF5;&#xC9C0;/&#xB274;&#xC2A4;
+                li
+                  a(href='/html/contact.html') &#xBB38;&#xC758;&#xD558;&#xAE30;
+  // End Header Lower
+  // Sticky Header
+  .sticky-header
+    .auto-container.clearfix
+      // Logo
+      .logo.pull-left
+        a(href='/html/index.html' title='')
+          img(src='../images/logo3.png' alt='' title='')
+      // Right Col
+      .pull-right.clearfix
+        // Main Menu
+        nav.main-menu.clearfix
+          // Keep This Empty / Menu will come through Javascript
+        // Main Menu End
+        // Contact Btn
+        .contact-link
+          a.theme-btn.btn-style-three(href='/html/contact.html')
+            span.btn-title
+              | Contact us
+              i.arrow.flaticon-play-button-1
+  // End Sticky Menu
+  // Mobile Menu
+  .mobile-menu
+    .menu-backdrop
+    .close-btn
+      span.icon.flaticon-letter-x
+    nav.menu-box
+      .nav-logo
+        a(href='index.html')
+          img(src='../images/logo3.png' alt='' title='')
+.align_right
+  span= `${user && user.username ? '['+user.username+']' : ''}`
+      .base-navi-wrap
+        span
+        if user && user.id
+          a.navi(href='/user/logout') LOGOUT
+        else
+          a.navi(href='/user/join') JOIN
+          a.navi(href='/user/login') LOGIN
